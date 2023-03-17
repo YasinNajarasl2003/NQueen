@@ -12,7 +12,7 @@ public class NQueenSolvation
             origin[i] = i;
         }
         // Parallel foreach to speed up the calculations
-        Parallel.ForEach(GetPermutations(origin, n), new ParallelOptions { MaxDegreeOfParallelism = 10}, permutation =>
+        Parallel.ForEach  (GetPermutations(origin, n), new ParallelOptions { MaxDegreeOfParallelism = 4}, permutation =>
         {
             int[,] map = new int[n, n];
             map = GetMap(permutation.ToArray(), n);
