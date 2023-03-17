@@ -26,7 +26,7 @@ while (true)
             Console.WriteLine("----------------------------------------------");
         }
         printWatch.Stop();
-        Console.WriteLine($"All posible ways: {Maps.Count} ms");
+        Console.WriteLine($"All posible ways: {Maps.Count}");
         Console.WriteLine($"Calculation Time: {calculationWatch.ElapsedMilliseconds} ms");
         Console.WriteLine($"Print Time: {printWatch.ElapsedMilliseconds} ms");
         Console.WriteLine($"Hole Time: {printWatch.ElapsedMilliseconds + calculationWatch.ElapsedMilliseconds}");

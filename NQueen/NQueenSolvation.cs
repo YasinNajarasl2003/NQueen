@@ -11,6 +11,19 @@ public class NQueenSolvation
         {
             origin[i] = i;
         }
+        // Parallel foreach to speed up the calculations
+        Parallel.ForEach(GetPermutations(origin, n), new ParallelOptions { MaxDegreeOfParallelism = 10}, permutation =>
+        {
+            int[,] map = new int[n, n];
+            map = GetMap(permutation.ToArray(), n);
+            if (IsSafe(map, n))
+            {
+                Maps.Add(Translator(map, n));
+            }
+        });
+
+        //Normal foreach optional to uses
+        /*
         foreach (IEnumerable<int> permutation in GetPermutations(origin, n))
         {
             int[,] map = new int[n, n];
@@ -20,6 +33,8 @@ public class NQueenSolvation
                 Maps.Add(Translator(map, n));
             }
         }
+        */
+
         return Maps;
     }
     private static char[,] Translator(int[,] input, int n)
